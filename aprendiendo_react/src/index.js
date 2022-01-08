@@ -1,40 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
+import Usuario from "./componentes/Usuario";
+import FormularioIniciarSesion from "./componentes/FormularioInicioSesion";
+import ContadorClass from './componentes/ContadorClass';
+import ContadorFunction from "./componentes/ContadorFunction";
 
-const nombre = "Bryan";
-const color = "blue";
-const sesion = true;
-const pais = null;
-const amigos = ["Saúl", "Itzel", "Fer"];
+const App = () => {
 
-const JSX = (
-  <div>
-    {sesion === true ? (
-      <div>
-        <h1 className="titulo" style={{ color: color }}>
-          Hola {nombre}!
-        </h1>
-        <p>Que tengas buen día.</p>
-        {pais && <p>Tú eres de {pais}</p>}
-        <ul>
-          {amigos.map((value, index) => (
-            <li key={index}>{value}</li>
-          ))}
-        </ul>
-      </div>
-    ) : (
-      <p>No has iniciado sesión.</p>
-    )}
-  </div>
-);
+  const [sesion, cambiarEstadoSesion] = useState(true);
 
-// const verificarSesion = (sesion) => {
-//   if (sesion == true) {
-//     return JSX;
-//   } else {
-//     return <h1>No has iniciado sesión.</h1>;
-//   }
-// };
+  return (
+    <React.Fragment>
+      {sesion === true ?
+        <div>
+          <Usuario />
+          <ContadorClass aumento={3} disminucion={3} />
+          <hr />
+          {/* <ContadorFunction aumento={3} disminucion={3} /> */}
+          <button onClick={() => cambiarEstadoSesion(false)}>Cerrar Sesión</button>
+        </div>
+        :
+        <div>
+          <FormularioIniciarSesion cambiarEstadoSesion={cambiarEstadoSesion} />
+          {/* <button onClick={() => cambiarEstadoSesion(true)}>Iniciar sesión</button> */}
+        </div>
+      }
+    </React.Fragment>
+  );
+};
 
-// ReactDOM.render(verificarSesion(sesion), document.getElementById("root"));
-ReactDOM.render(JSX, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
