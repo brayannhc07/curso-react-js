@@ -2,6 +2,14 @@ import React from "react";
 import Titulo from "./Titulo";
 import styled from "styled-components";
 
+const pStyle = {
+  margin: 20,
+};
+
+const Parrafo = styled.p`
+  margin: 20px 0px;
+`;
+
 const Usuario = () => {
   const pais = null;
   const amigos = ["Saúl", "Itzel", "Fer"];
@@ -19,14 +27,6 @@ const Usuario = () => {
       <Parrafo style={pStyle}>Que tengas buen día.</Parrafo>
     </div>
   );
-};
-
-const Parrafo = styled.p`
-  margin: 20px 0px;
-`;
-
-const pStyle = {
-  margin: 20,
 };
 
 export default Usuario;

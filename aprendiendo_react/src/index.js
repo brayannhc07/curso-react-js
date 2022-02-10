@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import Usuario from "./componentes/Usuario";
 import FormularioIniciarSesion from "./componentes/FormularioInicioSesion";
-import ContadorFunction from "./componentes/ContadorFunction";
-import Boton from './elementos/Boton';
+// import ContadorFunction from "./componentes/ContadorFunction";
+import Boton from "./elementos/Boton";
+import EjemploUseReducer from "./componentes/EjemploUseReducer";
 import "./index.css";
+import Blog from "./componentes/Blog";
 
 const App = () => {
   const [sesion, cambiarEstadoSesion] = useState(true);
@@ -14,7 +16,9 @@ const App = () => {
       {sesion === true ? (
         <div>
           <Usuario />
-          <ContadorFunction aumento={3} disminucion={3} />
+          <Blog />
+          {/* <ContadorFunction aumento={3} disminucion={3} /> */}
+          <EjemploUseReducer />
           <Boton largo marginTop onClick={() => cambiarEstadoSesion(false)}>
             Cerrar Sesión
           </Boton>
