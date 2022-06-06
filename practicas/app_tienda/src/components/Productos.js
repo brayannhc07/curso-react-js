@@ -2,25 +2,28 @@ import React from "react";
 import styled from "styled-components";
 
 const Productos = (props) => {
-	const { productos } = props;
-	return (
-		<div>
-			<h3>Productos</h3>
-			<ContenedorProductos>
-				{
-					productos.map((producto, index) => {
-						return (
-							<Producto key={index}>
-								<p>{producto.nombre}</p>
-								<Boton>Agregar al carrito</Boton>
-							</Producto>
-						);
-					})
-				}
-			</ContenedorProductos>
+  const { productos, agregarProductoAlCarrito } = props;
+  return (
+    <div>
+      <h3>Productos</h3>
+      <ContenedorProductos>
+        {
+          productos.map((producto, index) => {
+            return (
+              <Producto key={index}>
+                <p>{producto.nombre}</p>
+                <Boton
+                  onClick={() => agregarProductoAlCarrito(producto.id, producto.nombre)}>
+                  Agregar al carrito
+                </Boton>
+              </Producto>
+            );
+          })
+        }
+      </ContenedorProductos>
 
-		</div>
-	);
+    </div>
+  );
 }
 
 const ContenedorProductos = styled.div`
